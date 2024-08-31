@@ -1,7 +1,9 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const canvasWidth = 1200;  // Increased width
-const canvasHeight = 900;  // Increased height
+
+// Set initial canvas size
+let canvasWidth = window.innerWidth;
+let canvasHeight = window.innerHeight;
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 
@@ -160,6 +162,13 @@ canvas.addEventListener('mousemove', (event) => {
     const rect = canvas.getBoundingClientRect();
     mouseX = event.clientX - rect.left;
     mouseY = event.clientY - rect.top;
+});
+
+window.addEventListener('resize', () => {
+    canvasWidth = window.innerWidth;
+    canvasHeight = window.innerHeight;
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
 });
 
 preloadImages(() => {
