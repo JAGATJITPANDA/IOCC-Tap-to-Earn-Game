@@ -158,10 +158,19 @@ function restartGame() {
 let mouseX = 0;
 let mouseY = 0;
 
+// Handle mouse movements
 canvas.addEventListener('mousemove', (event) => {
     const rect = canvas.getBoundingClientRect();
     mouseX = event.clientX - rect.left;
     mouseY = event.clientY - rect.top;
+});
+
+// Handle touch events for mobile devices
+canvas.addEventListener('touchmove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = event.touches[0].clientX - rect.left;
+    mouseY = event.touches[0].clientY - rect.top;
+    event.preventDefault();  // Prevent scrolling while touching
 });
 
 window.addEventListener('resize', () => {
